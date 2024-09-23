@@ -1,0 +1,33 @@
+<mvc:View controllerName="za.co.fuad.chatapp.controller.Citations"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout">
+    <Page>
+    <l:VerticalLayout
+        class="sapUiContentPadding"
+        width="100%">
+        <VBox>
+            <FeedListItem
+                class="sapUiMediumMarginBottom"
+                id="CitationItemsListItem"
+                icon="{= ${Role} === 'AI' ? '/images/chatbot.png' : '/images/user.png' }"
+                info="{Type}"
+                timestamp="{Date}"
+                text="{Text}"
+                showIcon="true"
+                convertLinksToAnchorTags="All">
+            </FeedListItem>
+            <List 
+                headerText="Citations"
+                growing="false"
+                items="{Citations}"> 
+                <items>
+                    <StandardListItem
+                        title="{Document}"
+                        wrapping="true"
+                        description="{Text}" />
+                </items>
+            </List>
+        </VBox>
+    </l:VerticalLayout>
+    </Page>
+</mvc:View>

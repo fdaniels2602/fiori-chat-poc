@@ -1,0 +1,27 @@
+<mvc:View controllerName="za.co.fuad.chatapp.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout">
+	<Page>
+    <l:VerticalLayout
+		class="sapUiContentPadding"
+		width="100%">
+		<l:content>
+			<List
+				items="{/EntryCollection}" >
+				<FeedListItem
+					icon="{= ${Role} === 'AI' ? '/images/chatbot.png' : '/images/user.png' }"
+					info="{Type}"
+					timestamp="{Date}"
+					text="{Text}"
+					showIcon="true"
+					convertLinksToAnchorTags="All"
+					actions="{path: 'Actions', templateShareable: false}">
+					<FeedListItemAction text="{Text}" icon="{Icon}" key="{Key}" press=".onActionPressed" />
+				</FeedListItem>
+			</List>
+			<FeedInput post=".onPost">
+			</FeedInput>
+		</l:content>
+	</l:VerticalLayout>
+	</Page>
+</mvc:View>
