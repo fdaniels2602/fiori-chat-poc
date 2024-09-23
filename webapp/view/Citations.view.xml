@@ -1,7 +1,7 @@
-<mvc:View controllerName="za.co.fuad.chatapp.controller.Citations"
+<mvc:View xmlns:core="sap.ui.core" controllerName="za.co.fuad.chatapp.controller.Citations"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m" xmlns:l="sap.ui.layout">
-    <Page>
+    <Page enableScrolling="false">
     <l:VerticalLayout
         class="sapUiContentPadding"
         width="100%">
@@ -16,10 +16,17 @@
                 showIcon="true"
                 convertLinksToAnchorTags="All">
             </FeedListItem>
+            <ScrollContainer horizontal="false" vertical="true" height="400px">
             <List 
-                headerText="Citations"
                 growing="false"
                 items="{Citations}"> 
+                <headerToolbar>
+                    <Toolbar >
+                        <core:Icon 
+                        src="sap-icon://pdf-attachment"
+                        color="Positive"></core:Icon>
+                    </Toolbar>
+                </headerToolbar>
                 <items>
                     <StandardListItem
                         title="{Document}"
@@ -27,6 +34,7 @@
                         description="{Text}" />
                 </items>
             </List>
+            </ScrollContainer>
         </VBox>
     </l:VerticalLayout>
     </Page>
