@@ -1,12 +1,11 @@
 <mvc:View controllerName="za.co.fuad.chatapp.controller.Home"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m" xmlns:l="sap.ui.layout">
-	<Page>
-    <l:VerticalLayout
-		class="sapUiContentPadding"
-		width="100%">
-		<l:content>
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.f">
+	<f:DynamicPage showFooter="true">
+		<f:content>
 			<List
+				class="sapUiSmallMarginBottom"
+				id="HomeList"
 				items="{/chat_history}" >
 				<FeedListItem
 					icon="{= ${role} === 'bot' ? '/images/chatbot.png' : '/images/user.png' }"
@@ -22,10 +21,13 @@
 						press=".onActionPressed" 
 						visible="{= ${role} === 'bot' }"/>
 				</FeedListItem>
-			</List>
-			<FeedInput post=".onPost">
-			</FeedInput>
-		</l:content>
-	</l:VerticalLayout>
-	</Page>
+				</List>
+		</f:content>
+		<f:footer>
+			<Toolbar height="75px">
+				<FeedInput post=".onPost">
+				</FeedInput>
+			</Toolbar>
+		</f:footer>
+	</f:DynamicPage>
 </mvc:View>

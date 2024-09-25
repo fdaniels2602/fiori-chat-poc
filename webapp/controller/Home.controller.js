@@ -15,6 +15,20 @@ sap.ui.define([
                 oRouter.navTo("citations", {
                     messagePath: encodeURIComponent(sMessagePath)
                 });
+            },
+
+            onPost: function (oEvent) {
+                // Assume "myList" is the ID of your sap.m.List control
+                var oList = this.getView().byId("HomeList");
+
+                // Get the number of items in the list
+                var itemCount = oList.getItems().length;
+
+                // Scroll to the last item (index is zero-based, so we subtract 1)
+                if (itemCount > 0) {
+                    oList.scrollToIndex(itemCount - 1);
+                }
+
             }
 
         });

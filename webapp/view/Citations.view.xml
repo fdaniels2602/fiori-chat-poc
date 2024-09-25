@@ -33,7 +33,7 @@
                             text="{source}"
                             class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
                         />
-                    <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
+                        <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
                     </VBox>
                     </CustomListItem>
                 </items>
