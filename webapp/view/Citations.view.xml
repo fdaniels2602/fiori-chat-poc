@@ -10,28 +10,32 @@
                 class="sapUiMediumMarginBottom"
                 id="CitationItemsListItem"
                 icon="{= ${Role} === 'AI' ? '/images/chatbot.png' : '/images/user.png' }"
-                info="{Type}"
-                timestamp="{Date}"
-                text="{Text}"
+                info="{= ${role} === 'bot' ? 'Citations (' + ${citation_count} + ')' : '' }"
+                timestamp="{timestamp}"
+                text="{message}"
                 showIcon="true"
                 convertLinksToAnchorTags="All">
             </FeedListItem>
             <ScrollContainer horizontal="false" vertical="true" height="400px">
             <List 
                 growing="false"
-                items="{Citations}"> 
+                items="{citations}"> 
                 <headerToolbar>
                     <Toolbar >
-                        <core:Icon 
-                        src="sap-icon://pdf-attachment"
-                        color="Positive"></core:Icon>
+                        <Title text="Citations"/>
                     </Toolbar>
                 </headerToolbar>
                 <items>
-                    <StandardListItem
-                        title="{Document}"
-                        wrapping="true"
-                        description="{Text}" />
+                    <CustomListItem>
+                        <VBox >
+                        <Link 
+                            href="{url}"
+                            text="{source}"
+                            class="sapUiMediumMarginBegin sapUiMediumMarginBottom sapUiMediumMarginTop"
+                        />
+                    <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiMediumMarginBottom"/>
+                    </VBox>
+                    </CustomListItem>
                 </items>
             </List>
             </ScrollContainer>

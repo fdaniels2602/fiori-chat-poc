@@ -7,16 +7,20 @@
 		width="100%">
 		<l:content>
 			<List
-				items="{/EntryCollection}" >
+				items="{/chat_history}" >
 				<FeedListItem
-					icon="{= ${Role} === 'AI' ? '/images/chatbot.png' : '/images/user.png' }"
-					info="{Type}"
-					timestamp="{Date}"
-					text="{Text}"
+					icon="{= ${role} === 'bot' ? '/images/chatbot.png' : '/images/user.png' }"
+					info="{= ${role} === 'bot' ? 'Citations (' + ${citation_count} + ')' : '' }"
+					timestamp="{timestamp}"
+					text="{message}"
 					showIcon="true"
-					convertLinksToAnchorTags="All"
-					actions="{path: 'Actions', templateShareable: false}">
-					<FeedListItemAction text="{Text}" icon="{Icon}" key="{Key}" press=".onActionPressed" />
+					convertLinksToAnchorTags="All">
+					<FeedListItemAction 
+						text="Citations" 
+						icon="sap-icon://display" 
+						key="{url}" 
+						press=".onActionPressed" 
+						visible="{= ${role} === 'bot' }"/>
 				</FeedListItem>
 			</List>
 			<FeedInput post=".onPost">
