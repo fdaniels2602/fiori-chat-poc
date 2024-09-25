@@ -27,13 +27,13 @@
                 </headerToolbar>
                 <items>
                     <CustomListItem>
-                        <VBox >
+                        <VBox>
                         <Link 
                             href="{url}"
                             text="{source}"
-                            class="sapUiMediumMarginBegin sapUiMediumMarginBottom sapUiMediumMarginTop"
+                            class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
                         />
-                    <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiMediumMarginBottom"/>
+                    <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
                     </VBox>
                     </CustomListItem>
                 </items>
