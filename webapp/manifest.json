@@ -61,6 +61,10 @@
       "": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/blackhole.json"
+      },
+      "facts": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/facts.json"
       }
     },
     "resources": {
