@@ -6,39 +6,44 @@
         class="sapUiContentPadding"
         width="100%">
         <VBox>
-            <FeedListItem
+            <Panel 
                 class="sapUiMediumMarginBottom"
-                id="CitationItemsListItem"
-                icon="{= ${Role} === 'AI' ? '/images/chatbot.png' : '/images/user.png' }"
-                info="{= ${role} === 'bot' ? 'Citations (' + ${citation_count} + ')' : '' }"
-                timestamp="{timestamp}"
-                text="{message}"
-                showIcon="true"
-                convertLinksToAnchorTags="All">
-            </FeedListItem>
-            <ScrollContainer horizontal="false" vertical="true" height="400px">
-            <List 
-                growing="false"
-                items="{citations}"> 
-                <headerToolbar>
-                    <Toolbar >
-                        <Title text="Citations"/>
-                    </Toolbar>
-                </headerToolbar>
-                <items>
-                    <CustomListItem>
-                        <VBox>
-                        <Link 
-                            href="{url}"
-                            text="{source}"
-                            class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
-                        />
-                        <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
-                    </VBox>
-                    </CustomListItem>
-                </items>
-            </List>
-            </ScrollContainer>
+                expandable="true"
+                expanded="true">
+                <FeedListItem
+                    id="CitationItemsListItem"
+                    icon="/images/chatbot.png"
+                    info="{= ${role} === 'bot' ? 'Citations (' + ${citation_count} + ')' : '' }"
+                    timestamp="{timestamp}"
+                    text="{message}"
+                    showIcon="true"
+                    convertLinksToAnchorTags="All">
+                </FeedListItem>
+            </Panel>
+            <Panel 
+                expandable="true"
+                expanded="true"
+                headerText="Citations">
+                <ScrollContainer horizontal="false" vertical="true" height="400px">
+                    <List 
+                        growing="false"
+                        items="{citations}"> 
+                        <items>
+                            <CustomListItem>
+                                <VBox>
+                                <Link 
+                                    href="{url}"
+                                    text="{source}"
+                                    target="_blank"
+                                    class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
+                                />
+                                <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
+                            </VBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+                </ScrollContainer>
+            </Panel>
         </VBox>
     </l:VerticalLayout>
     </Page>

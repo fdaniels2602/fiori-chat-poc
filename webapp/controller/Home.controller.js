@@ -74,6 +74,9 @@ sap.ui.define([
 
             onPost: async function (oEvent) {
 
+                // disable feed input control
+                this.oFeedInput.setEnabled(false);
+
                 // get the default JSON model
                 const oModel = this.oComponent.getModel();
 
@@ -83,9 +86,6 @@ sap.ui.define([
                 // get the value of the text of the feedinput UI control
                 //const oFeedInput = this.getView().byId("FeedInput");
                 const sValue = this.oFeedInput.getValue();
-
-                // disable feed input control
-                this.oFeedInput.setEnabled(false);
 
                 // get current timestamp
                 const now = new Date();
