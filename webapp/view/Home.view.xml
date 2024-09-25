@@ -25,7 +25,10 @@
 		</f:content>
 		<f:footer>
 			<Toolbar height="75px">
-				<FeedInput  id="FeedInput" post=".onPost">
+				<FeedInput 
+					id="FeedInput" 
+					icon="/images/user.png"
+					post=".onPost">
 				</FeedInput>
 			</Toolbar>
 		</f:footer>
