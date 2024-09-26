@@ -1,68 +1,73 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+    "@langchain/openai",
+    "@langchain/core/messages"
 ],
-    function (Controller) {
+    function (Controller, openai, messages) {
         "use strict";
 
         return Controller.extend("za.co.fuad.chatapp.controller.Home", {
 
-            _addFact: function () {
-
-                // get a reference to the facts model
-                const oFactsModel = this.oComponent.getModel("facts");
-
-                // get the array of facts from the facts model
-                const aFacts = oFactsModel.getData().black_hole_facts;
-
-                // randomly read one of the entries in the aFacts array
-                const iRandomIndex = Math.floor(Math.random() * aFacts.length);
-                const randomFact = aFacts[iRandomIndex].fact;
-
-                // get the default JSON model
-                const oModel = this.oComponent.getModel();
-                let oData = oModel.getData();
-
-                const now = new Date();
-                const formattedDate = this._formatDate(now);
-
-                oData.chat_history.push({
-                    "role": "bot",
-                    "message": randomFact,
-                    "timestamp": formattedDate,
-                    "citation_count": 0
-                });
-
-                // set the data of the model with the values from the aData array
-                oModel.setData(oData);
-
-                // scroll the list to the last entry
-                this.oList.scrollToIndex(oData.chat_history.length - 1);
-
-                // enable feed input control
-                this.oFeedInput.setEnabled(true);
-                this.oList.setBusy(false);
-            },
-
-            _delayBySeconds: async function (seconds) {
-
-                var that = this;
-
-                return new Promise(function (resolve, reject) {
-                    setTimeout.call(this, function () {
-                        that._addFact();
-                    }, seconds * 1000);
-                });
-            },
+            _key: 0,
 
             _formatDate: function (date) {
                 const options = { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
                 return date.toLocaleString('en-GB', options).replace(',', '');
             },
 
+            getUniqueKey: function () {
+                this._key++;
+                return this._key;
+            },
+
+            _getBotResponse: async function (sPrompt) {
+
+                //add an entry to the end of the List
+                const oModel = this.oComponent.getModel();
+
+                let oData = oModel.getData();
+
+                oData.chat_history.push({
+                    "role": "bot",
+                    "message": "",
+                    "timestamp": "",
+                    "citation_count": 0
+                });
+
+                const oAiModel = new openai.ChatOpenAI({
+                    modelName: 'gpt-3.5-turbo'
+                });
+
+                // stream the response from the bot
+                const response = await oAiModel.stream([
+                    new messages.HumanMessage(sPrompt),
+                ]);
+                this.oList.setBusy(false);
+
+                // get the index of the last entry in the chat_history array
+                const iLastIndex = oData.chat_history.length - 1;
+
+                this._typewriter(oData, response, iLastIndex, oModel);
+
+                this.oList.scrollToIndex(oData.chat_history.length - 1);
+                this.oFeedInput.setEnabled(true);
+            },
+
+            _typewriter: async function (oData, response, iLastIndex, oModel) {
+
+                for await (const chunk of response) {
+                    oData.chat_history[iLastIndex].message += chunk.content;
+                    oModel.setData(oData);
+                    setTimeout(this._typewriter, 200);
+                    this.oList.scrollToIndex(iLastIndex);
+                };
+            },
+
             onInit: function () {
                 this.oFeedInput = this.getView().byId("FeedInput");
                 this.oList = this.getView().byId("HomeList");
                 this.oComponent = this.getOwnerComponent();
+                //this.oList.setVisible(false);
             },
 
             onActionPressed: function (oEvent) {
@@ -74,6 +79,11 @@ sap.ui.define([
             },
 
             onPost: async function (oEvent) {
+
+                if (!this.oList.getVisible()) {
+                    this.oList.setVisible(true);
+                }
+                // disable the list while we wait for the bot response
                 this.oList.setBusyIndicatorDelay(10).setBusy(true);
 
                 // disable feed input control
@@ -90,7 +100,6 @@ sap.ui.define([
                 const now = new Date();
                 const formattedDate = this._formatDate(now);
 
-
                 // add a new entry to the end of the model
                 let oData = oModel.getData();
 
@@ -106,7 +115,7 @@ sap.ui.define([
                 this.oList.scrollToIndex(oData.chat_history.length - 1);
 
                 //simulate wait for bot to respond
-                await this._delayBySeconds(2);
+                this._getBotResponse(sValue);
 
             }
 
