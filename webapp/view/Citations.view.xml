@@ -9,6 +9,7 @@
             <Panel 
                 class="sapUiMediumMarginBottom"
                 expandable="true"
+                headerText="Context"
                 expanded="true">
                 <FeedListItem
                     id="CitationItemsListItem"

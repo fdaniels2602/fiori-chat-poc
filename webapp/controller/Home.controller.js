@@ -40,6 +40,7 @@ sap.ui.define([
 
                 // enable feed input control
                 this.oFeedInput.setEnabled(true);
+                this.oList.setBusy(false);
             },
 
             _delayBySeconds: async function (seconds) {
@@ -73,15 +74,13 @@ sap.ui.define([
             },
 
             onPost: async function (oEvent) {
+                this.oList.setBusyIndicatorDelay(10).setBusy(true);
 
                 // disable feed input control
                 this.oFeedInput.setEnabled(false);
 
                 // get the default JSON model
                 const oModel = this.oComponent.getModel();
-
-                // add a new entry to the end of the model
-                let oData = oModel.getData();
 
                 // get the value of the text of the feedinput UI control
                 //const oFeedInput = this.getView().byId("FeedInput");
@@ -90,6 +89,10 @@ sap.ui.define([
                 // get current timestamp
                 const now = new Date();
                 const formattedDate = this._formatDate(now);
+
+
+                // add a new entry to the end of the model
+                let oData = oModel.getData();
 
                 oData.chat_history.push({
                     "role": "human",
