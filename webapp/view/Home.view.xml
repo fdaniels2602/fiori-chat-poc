@@ -13,11 +13,12 @@
 					timestamp="{timestamp}"
 					text="{message}"
 					showIcon="true"
+					maxCharacters="1000"
 					convertLinksToAnchorTags="All">
 					<FeedListItemAction 
 						text="Citations" 
 						icon="sap-icon://display" 
-						key="{url}" 
+						key="" 
 						press=".onActionPressed" 
 						visible="{= ${role} === 'bot' }"/>
 				</FeedListItem>
