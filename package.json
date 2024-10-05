@@ -10,10 +10,10 @@
   ],
   "main": "webapp/index.html",
   "devDependencies": {
-    "ui5-tooling-modules": "^3.13.0",
     "@langchain/openai": "^0.3.2",
     "@sap/ux-ui5-tooling": "1",
-    "@ui5/cli": "^3.0.0"
+    "@ui5/cli": "^3.11.3",
+    "ui5-tooling-modules": "^3.13.0"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#zacofuadchatapp-display\"",

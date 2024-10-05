@@ -1,0 +1,25 @@
+<mvc:View 
+    id="pdfView"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout">
+    <m:Page>
+    <m:HBox justifyContent="Center" width="100%">
+        <m:Select
+            width="20em"
+            class="sapUiSmallMargin"
+            enabled="true"
+            editable="true"
+            forceSelection="true">
+            <core:Item key="doc1" text="Document 1.pdf" />
+            <core:Item key="doc2" text="Document 2.pdf" />
+        </m:Select>
+    </m:HBox>
+    <m:PDFViewer source="/documents/doc1.pdf" title="My PDF display" height="800px">
+        <m:layoutData>
+            <m:FlexItemData growFactor="1" />
+        </m:layoutData>
+    </m:PDFViewer>
+    </m:Page>
+</mvc:View>

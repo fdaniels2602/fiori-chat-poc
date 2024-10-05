@@ -1,0 +1,85 @@
+<mvc:View 
+    id="CitationsOverview"
+    controllerName="za.co.fuad.chatapp.controller.CitationsOverview"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f">
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true" >
+                <Title text="Context"/>
+                <FeedListItem
+                    id="CitationHeader"
+                    icon="/images/chatbot.png"
+                    timestamp="{timestamp}"
+                    text="{message}"
+                    showIcon="true"
+                    convertLinksToAnchorTags="All">
+                </FeedListItem>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <IconTabBar>
+                <items>
+                    <IconTabFilter
+                        count="2"
+                        key="citationsTab"
+                        icon="sap-icon://tag"
+                        text="Citations">
+                        <List 
+                        growing="false"
+                        items="{citations}"> 
+                        <items>
+                            <CustomListItem>
+                                <VBox>
+                                <Button 
+                                    text="{source}"
+                                    press=".onLinkPress"
+                                    class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
+                                />
+                                <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
+                            </VBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        count="2"
+                        key="documentsTab"
+                        icon="sap-icon://pdf-attachment"
+                        text="Documents">
+                        <l:ResponsiveSplitter >
+                            <l:PaneContainer>
+                                <l:SplitPane>
+                                    <Select
+                                        width="20em"
+                                        change=".onDocSelected"
+                                        class="sapUiSmallMargin"
+                                        enabled="true"
+                                        editable="true"
+                                        forceSelection="true">
+                                        <core:Item key="/documents/doc1.pdf" text="Document 1.pdf" />
+                                        <core:Item key="/documents/doc2.pdf" text="Document 2.pdf" />
+                                    </Select>
+                                </l:SplitPane>
+                                <l:SplitPane>
+                                    <PDFViewer
+                                        id="pdfViewer"
+                                        source="/documents/doc1.pdf"
+                                        width="auto"
+                                        height="800px">
+                                        <layoutData>
+                                            <FlexItemData growFactor="1" />
+                                        </layoutData>
+                                    </PDFViewer>
+                                </l:SplitPane >
+                            </l:PaneContainer>
+                        </l:ResponsiveSplitter>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
