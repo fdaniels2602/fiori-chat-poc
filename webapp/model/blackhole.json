@@ -1,0 +1,54 @@
+{
+    "chat_history": [
+      {
+        "role": "human",
+        "message": "What is a black hole?",
+        "timestamp": "25 September 2024 10:00",
+        "citation_count": 0
+      },
+      {
+        "role": "bot",
+        "message": "A black hole is a region in space where the gravitational pull is so strong that nothing, not even light, can escape. Black holes form when massive stars collapse under their own gravity after exhausting their nuclear fuel.",
+        "timestamp": "25 September 2024 10:00",
+        "citation_count": 2,
+        "icon": "sap-icon://display",
+        "citations": [
+          {
+            "source": "Document 1.pdf",
+            "url": "/documents/doc1.pdf",
+            "excerpt": "A black hole is a place in space where gravity pulls so much that even light cannot get out. The gravity is so strong because matter has been squeezed into a tiny space."
+          },
+          {
+            "source": "Document 2.pdf",
+            "url": "/documents/doc2.pdf",
+            "excerpt": "Einstein’s theory predicts the formation of black holes when stars collapse under their own gravity."
+          }
+        ]
+      },
+      {
+        "role": "human",
+        "message": "Have we ever photographed a black hole?",
+        "timestamp": "25 September 2024 10:01",
+        "citation_count": 0
+      },
+      {
+        "role": "bot",
+        "message": "Yes, the first-ever image of a black hole was captured in 2019 by the Event Horizon Telescope. It revealed the black hole at the center of the M87 galaxy, approximately 55 million light-years from Earth.",
+        "timestamp": "25 September 2024 10:01",
+        "citation_count": 2,
+        "icon": "sap-icon://display",
+        "citations": [
+          {
+            "source": "Event Horizon Telescope Collaboration",
+            "url": "https://eventhorizontelescope.org/",
+            "excerpt": "In 2019, the Event Horizon Telescope captured the first image of a black hole, located in the galaxy M87."
+          },
+          {
+            "source": "National Science Foundation",
+            "url": "https://www.nsf.gov/news/special_reports/blackholes/",
+            "excerpt": "The Event Horizon Telescope (EHT) captured a groundbreaking image of a supermassive black hole at the center of the M87 galaxy."
+          }
+        ]
+      }
+    ]
+  }

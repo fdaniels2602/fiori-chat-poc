@@ -32,10 +32,9 @@
                         <items>
                             <CustomListItem>
                                 <VBox>
-                                <Link 
-                                    href="{url}"
+                                <Button 
                                     text="{source}"
-                                    target="_blank"
+                                    press=".onLinkPress"
                                     class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
                                 />
                                 <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>

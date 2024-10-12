@@ -93,10 +93,17 @@
           ]
         },
         {
-          "name": "citations",
+          "name": "citationsOverview",
           "pattern": "citations/{messagePath}",
           "target": [
-            "TargetCitations"
+            "TargetCitationsOverview"
+          ]
+        },
+        {
+          "name": "pdf",
+          "pattern": "citations/pdf",
+          "target": [
+            "ViewPdf"
           ]
         }
       ],
@@ -108,12 +115,39 @@
           "viewId": "Home",
           "viewName": "Home"
         },
-        "TargetCitations": {
+        "TargetCitationsOverview": {
           "viewType": "XML",
           "transition": "slide",
+          "viewLevel": 2,
           "clearControlAggregation": false,
-          "viewId": "Citations",
+          "viewId": "CitationsOverview",
+          "viewName": "CitationsOverview"
+        },
+        "CitationsOverview": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewLevel": 2,
+          "clearControlAggregation": false,
+          "viewId": "CitationsOverview",
+          "viewName": "CitationsOverview"
+        },
+        "TargetCitations": {
+          "viewType": "XML",
+          "parent": "CitationsOverview",
+          "controlId": "fcl",
+          "controlAggregation": "beginColumnPages",
+          "transition": "slide",
+          "clearControlAggregation": false,
           "viewName": "Citations"
+        },
+        "ViewPdf": {
+          "viewType": "XML",
+          "parent": "CitationsOverview",
+          "controlId": "fcl",
+          "controlAggregation": "midColumnPages",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Pdf"
         }
       }
     },

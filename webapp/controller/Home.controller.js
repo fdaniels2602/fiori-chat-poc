@@ -73,7 +73,7 @@ sap.ui.define([
             onActionPressed: function (oEvent) {
                 const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 const sMessagePath = oEvent.getSource().getParent().getBindingContext().getPath();
-                oRouter.navTo("citations", {
+                oRouter.navTo("citationsOverview", {
                     messagePath: encodeURIComponent(sMessagePath)
                 });
             },
