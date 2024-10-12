@@ -21,65 +21,23 @@
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
-            <IconTabBar>
+            <List 
+                growing="false"
+                items="{citations}"> 
                 <items>
-                    <IconTabFilter
-                        count="2"
-                        key="citationsTab"
-                        icon="sap-icon://tag"
-                        text="Citations">
-                        <List 
-                        growing="false"
-                        items="{citations}"> 
-                        <items>
-                            <CustomListItem>
-                                <VBox>
-                                <Button 
-                                    text="{source}"
-                                    press=".onLinkPress"
-                                    class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
-                                />
-                                <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
-                            </VBox>
-                            </CustomListItem>
-                        </items>
-                    </List>
-                    </IconTabFilter>
-                    <IconTabFilter
-                        count="2"
-                        key="documentsTab"
-                        icon="sap-icon://pdf-attachment"
-                        text="Documents">
-                        <l:ResponsiveSplitter >
-                            <l:PaneContainer>
-                                <l:SplitPane>
-                                    <Select
-                                        width="20em"
-                                        change=".onDocSelected"
-                                        class="sapUiSmallMargin"
-                                        enabled="true"
-                                        editable="true"
-                                        forceSelection="true">
-                                        <core:Item key="/documents/doc1.pdf" text="Document 1.pdf" />
-                                        <core:Item key="/documents/doc2.pdf" text="Document 2.pdf" />
-                                    </Select>
-                                </l:SplitPane>
-                                <l:SplitPane>
-                                    <PDFViewer
-                                        id="pdfViewer"
-                                        source="/documents/doc1.pdf"
-                                        width="auto"
-                                        height="800px">
-                                        <layoutData>
-                                            <FlexItemData growFactor="1" />
-                                        </layoutData>
-                                    </PDFViewer>
-                                </l:SplitPane >
-                            </l:PaneContainer>
-                        </l:ResponsiveSplitter>
-                    </IconTabFilter>
+                    <CustomListItem>
+                        <VBox>
+                        <Button 
+                            text="{source}"
+                            press=".onLinkPress"
+                            type="Transparent"
+                            class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop"
+                        />
+                        <Text text="{excerpt}" class="sapUiMediumMarginBegin sapUiSmallMarginBottom"/>
+                    </VBox>
+                    </CustomListItem>
                 </items>
-            </IconTabBar>
+            </List>
         </f:content>
     </f:DynamicPage>
 </mvc:View>

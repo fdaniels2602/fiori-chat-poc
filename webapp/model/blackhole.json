@@ -20,7 +20,7 @@
           },
           {
             "source": "Document 2.pdf",
-            "url": "/documents/doc2.pdf",
+            "url": "https://help.sap.com/doc/61634ead9e5144b89e7eca2b1d4b8bce/1909/en-US/UITECH_OP1909_latest.pdf",
             "excerpt": "Einstein’s theory predicts the formation of black holes when stars collapse under their own gravity."
           }
         ]
@@ -40,13 +40,18 @@
         "citations": [
           {
             "source": "Event Horizon Telescope Collaboration",
-            "url": "https://eventhorizontelescope.org/",
+            "url": "https://www.tutorialspoint.com/sap_fiori/sap_fiori_tutorial.pdf",
             "excerpt": "In 2019, the Event Horizon Telescope captured the first image of a black hole, located in the galaxy M87."
           },
           {
             "source": "National Science Foundation",
-            "url": "https://www.nsf.gov/news/special_reports/blackholes/",
+            "url": "https://assets.dm.ux.sap.com/webinars/sap-user-groups-k4u/pdfs/220315_guide_to_sap_fiori_user_experience_and_its_technologies.pdf",
             "excerpt": "The Event Horizon Telescope (EHT) captured a groundbreaking image of a supermassive black hole at the center of the M87 galaxy."
+          },
+          {
+            "source": "NASA",
+            "url": "https://help.sap.com/doc/9bd4f94160354d919acac1e7253c646c/1.0/en-US/FIORI_CONV.pdf",
+            "excerpt": "The Event Horizon Telescope (EHT) captured the first image of a black hole, located in the galaxy M87."
           }
         ]
       }
